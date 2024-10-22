@@ -52,7 +52,9 @@ public class BaseballGame {
     }
 
     protected boolean validateInput(String input){
+        // 1부터 9사이의 숫자인지 확인
         if(input.matches("^[1-9]*$")){
+            // 중복된 숫자가 없는지 확인
             int[] inputDigits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
             for (int i=0; i<3; i++){
                 for (int j=0; j<i; j++){
@@ -70,6 +72,7 @@ public class BaseballGame {
     private int countStrike(String input){
         int[] inputDigits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
         int count = 0;
+        // 같은 숫자 같은 자리가 있는지 확인
         for (int i=0; i<3; i++){
             if (inputDigits[i]==answer[i]){
                 count++;
@@ -81,6 +84,7 @@ public class BaseballGame {
     private int countBall(String input){
         int[] inputDigits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
         int count = 0;
+        // 같은 숫자 다른 자리가 있는지 확인
         for (int i=0; i<3; i++){
             for (int j=0; j<i; j++){
                 if(inputDigits[i]==answer[j]){
