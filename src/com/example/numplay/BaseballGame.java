@@ -25,6 +25,7 @@ public class BaseballGame {
             System.out.println("1.게임 시작하기 2. 게임 기록 보기 3. 종료하기");
             int option = scanner2.nextInt();
             if (option==1){
+                System.out.println();
                 System.out.println("< 게임을 시작합니다 >");
                 // 정답 answer을 설정
                 answerSet.clear();
