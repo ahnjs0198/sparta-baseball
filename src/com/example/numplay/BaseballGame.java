@@ -10,7 +10,6 @@ public class BaseballGame {
     List<Integer> answerList = new ArrayList<>();
     Random random = new Random();
     Scanner scanner = new Scanner(System.in);
-    Scanner scanner2 = new Scanner(System.in);
     int count = 0;
     int level = 3;
     BaseballGameDisplay hint = new BaseballGameDisplay();
@@ -27,12 +26,14 @@ public class BaseballGame {
         while(true){
             System.out.println("환영합니다! 원하시는 번호를 입력해주세요");
             System.out.println("0. 자리수 설정 1.게임 시작하기 2. 게임 기록 보기 3. 종료하기");
-            int option = scanner2.nextInt();
+            int option = scanner.nextInt();
+            scanner.nextLine();
             // 0. 자리수 설정
             if (option==0){
                 while(true){
                     System.out.println("설정하고자 하는 자리수를 입력하세요.");
-                    level = scanner2.nextInt();
+                    level = scanner.nextInt();
+                    scanner.nextLine();
                     if (level>2 && level<6){
                         System.out.println(level+"자리수 난이도로 설정되었습니다.");
                         break;
