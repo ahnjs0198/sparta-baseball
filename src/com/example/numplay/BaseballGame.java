@@ -1,5 +1,6 @@
 package com.example.numplay;
 
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -65,14 +66,16 @@ public class BaseballGame {
                     // 7. 힌트 출력
                     hint.displayHint(strike, ball);
                 }
-            } else if (option==3){
-                System.out.println("게임 종료");
-                break;
             } else if (option==2){
                 System.out.println(gameLog);
                 for (int i=0; i<gameLog.size(); i++){
                     System.out.println(i+1+"번째 게임 : 시도 횟수 - "+ gameLog.get(i));
                 }
+            }  else if (option==3){
+                System.out.println("< 숫자 야구 게임을 종료합니다 >");
+                break;
+            } else {
+                System.out.println("올바른 숫자를 입력해주세요!");
             }
         }
 
