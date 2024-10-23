@@ -12,6 +12,7 @@ public class BaseballGame {
     Scanner scanner2 = new Scanner(System.in);
     int count = 0;
     BaseballGameDisplay hint = new BaseballGameDisplay();
+    List<Integer> gameLog = new ArrayList<>();
 
 
     public BaseballGame() {
@@ -21,6 +22,7 @@ public class BaseballGame {
     public int play() {
 
         while(true){
+            count = 0;
             System.out.println("환영합니다! 원하시는 번호를 입력해주세요");
             System.out.println("1.게임 시작하기 2. 게임 기록 보기 3. 종료하기");
             int option = scanner2.nextInt();
@@ -34,7 +36,7 @@ public class BaseballGame {
                 }
                 answerList = new ArrayList<>(answerSet);
                 Collections.shuffle(answerList);
-                //System.out.println(answerList);
+                System.out.println(answerList);
                 answer = answerList.stream().mapToInt(Integer::intValue).toArray();
                 while(true) {
                     // 1. 유저에게 입력값을 받음
@@ -54,6 +56,8 @@ public class BaseballGame {
                     // 5. 정답여부 확인, 만약 정답이면 break 를 이용해 반복문 탈출
                     if (strike == 3){
                         System.out.println("정답입니다!");
+                        System.out.println("시도횟수 - "+count);
+                        gameLog.add(count);
                         break;
                     }
                     // 6. 볼 개수 계산
@@ -64,6 +68,11 @@ public class BaseballGame {
             } else if (option==3){
                 System.out.println("게임 종료");
                 break;
+            } else if (option==2){
+                System.out.println(gameLog);
+                for (int i=0; i<gameLog.size(); i++){
+                    System.out.println(i+1+"번째 게임 : 시도 횟수 - "+ gameLog.get(i));
+                }
             }
         }
 
