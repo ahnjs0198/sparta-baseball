@@ -52,7 +52,7 @@ public class BaseballGame {
                 }
                 answerList = new ArrayList<>(answerSet);
                 Collections.shuffle(answerList);
-                System.out.println(answerList);
+                //System.out.println(answerList);
                 answer = answerList.stream().mapToInt(Integer::intValue).toArray();
                 while(true) {
                     // 1. 유저에게 입력값을 받음
