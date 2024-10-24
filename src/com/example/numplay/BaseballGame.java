@@ -10,7 +10,7 @@ public class BaseballGame {
     List<Integer> answerList = new ArrayList<>();
     Random random = new Random();
     Scanner scanner = new Scanner(System.in);
-    int count = 0;
+    int gameCount = 0;
     int level = 3;
     BaseballGameDisplay hint = new BaseballGameDisplay();
     List<Integer> gameLog = new ArrayList<>();
@@ -22,7 +22,7 @@ public class BaseballGame {
     }
 
     public int play() {
-        count = 0;
+        gameCount = 0;
         while(true){
             System.out.println("환영합니다! 원하시는 번호를 입력해주세요");
             System.out.println("0. 자리수 설정 1.게임 시작하기 2. 게임 기록 보기 3. 종료하기");
@@ -66,14 +66,14 @@ public class BaseballGame {
                         input = scanner.nextLine();
                     }
                     // 3. 게임 진행횟수 증가
-                    count++;
+                    gameCount++;
                     // 4. 스트라이크 개수 계산
                     int strike = countStrike(input, level);
                     // 5. 정답여부 확인, 만약 정답이면 break 를 이용해 반복문 탈출
                     if (strike == level){
                         System.out.println("정답입니다!");
-                        System.out.println("시도횟수 - "+count);
-                        gameLog.add(count);
+                        System.out.println("시도횟수 - "+gameCount);
+                        gameLog.add(gameCount);
                         break;
                     }
                     // 6. 볼 개수 계산
@@ -97,7 +97,7 @@ public class BaseballGame {
         }
 
         // 게임 진행횟수 반환
-        return count;
+        return gameCount;
     }
 
     protected boolean validateInput(String input, int level){
@@ -120,27 +120,27 @@ public class BaseballGame {
 
     private int countStrike(String input, int level){
         int[] inputDigits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
-        int count = 0;
+        int strikeCount = 0;
         // 같은 숫자 같은 자리가 있는지 확인
         for (int i=0; i<level; i++){
             if (inputDigits[i]==answer[i]){
-                count++;
+                strikeCount++;
             }
         }
-        return count;
+        return strikeCount;
     }
 
     private int countBall(String input, int level){
         int[] inputDigits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
-        int count = 0;
+        int ballCount = 0;
         // 같은 숫자 다른 자리가 있는지 확인
         for (int i=0; i<level; i++){
             for (int j=0; j<i; j++){
                 if(inputDigits[i]==answer[j]){
-                    count++;
+                    ballCount++;
                 }
             }
         }
-        return count;
+        return ballCount;
     }
 }
