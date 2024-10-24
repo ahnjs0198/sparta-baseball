@@ -23,14 +23,14 @@ public class BaseballGame {
 
     public int play() {
         gameCount = 0;
-        while(true){
+        while (true){
             System.out.println("환영합니다! 원하시는 번호를 입력해주세요");
             System.out.println("0. 자리수 설정 1.게임 시작하기 2. 게임 기록 보기 3. 종료하기");
             int option = scanner.nextInt();
             scanner.nextLine();
             // 0. 자리수 설정
             if (option==0){
-                while(true){
+                while (true){
                     System.out.println("설정하고자 하는 자리수를 입력하세요.");
                     level = scanner.nextInt();
                     scanner.nextLine();
@@ -54,12 +54,12 @@ public class BaseballGame {
                 Collections.shuffle(answerList);
                 //System.out.println(answerList);
                 answer = answerList.stream().mapToInt(Integer::intValue).toArray();
-                while(true) {
+                while (true) {
                     // 1. 유저에게 입력값을 받음
                     System.out.println("숫자를 입력하세요");
                     String input = scanner.nextLine();
                     // 2. 올바른 입력값을 받았는지 검증
-                    while(!validateInput(input, level)){
+                    while (!validateInput(input, level)){
                         System.out.println("올바르지 않은 입력값입니다");
                         System.out.println();
                         System.out.println("숫자를 입력하세요");
@@ -100,9 +100,9 @@ public class BaseballGame {
         return gameCount;
     }
 
-    protected boolean validateInput(String input, int level){
+    protected boolean validateInput (String input, int level){
         // 1부터 9사이의 숫자인지 확인
-        if(input.matches("^[1-9]*$")){
+        if (input.matches("^[1-9]*$")){
             // 중복된 숫자가 없는지 확인
             int[] inputDigits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
             for (int i=0; i<level; i++){
@@ -118,7 +118,7 @@ public class BaseballGame {
         }
     }
 
-    private int countStrike(String input, int level){
+    private int countStrike (String input, int level){
         int[] inputDigits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
         int strikeCount = 0;
         // 같은 숫자 같은 자리가 있는지 확인
@@ -130,7 +130,7 @@ public class BaseballGame {
         return strikeCount;
     }
 
-    private int countBall(String input, int level){
+    private int countBall (String input, int level){
         int[] inputDigits = Stream.of(input.split("")).mapToInt(Integer::parseInt).toArray();
         int ballCount = 0;
         // 같은 숫자 다른 자리가 있는지 확인
