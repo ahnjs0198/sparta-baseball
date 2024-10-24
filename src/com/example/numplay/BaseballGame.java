@@ -6,16 +6,14 @@ import java.util.stream.Stream;
 
 public class BaseballGame {
     HashSet<Integer> answerSet = new HashSet<>();
-    int[] answer;
     List<Integer> answerList = new ArrayList<>();
+    List<Integer> gameLog = new ArrayList<>();
+    BaseballGameDisplay hint = new BaseballGameDisplay();
     Random random = new Random();
     Scanner scanner = new Scanner(System.in);
+    int[] answer;
     int gameCount = 0;
     int level = 3;
-    BaseballGameDisplay hint = new BaseballGameDisplay();
-    List<Integer> gameLog = new ArrayList<>();
-
-
 
     public BaseballGame() {
 
